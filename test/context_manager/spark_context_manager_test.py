@@ -10,19 +10,16 @@ spark = SparkSession.builder.appName('TestSparkSession').getOrCreate()
 
 def test_spark_context_manager():
     spark_context = SparkContextManager(spark=None)
-    print(spark_context.get_spark_queue())
     assert spark_context != None
 
 
 def test_spark_context_with_no_args():
     spark_manager = SparkContextManager(spark=None)
-    print(spark_manager.get_spark_queue())
     spark_context = spark_manager.get_spark_context()
     assert spark_context.getConf().get('spark.app.name') == "DefaultSparkSession"
 
 
 def test_spark_context_with_args():
     spark_manager = SparkContextManager(spark=spark)
-    print(spark_manager.get_spark_queue())
     spark_context = spark_manager.get_spark_context()
     assert spark_context.getConf().get('spark.app.name') == "TestSparkSession"
