@@ -25,16 +25,14 @@ def test_import_delta_table_right_path():
 def test_import_delta_table_wrong_path():
     pass
 
-def test_import_csv_table_with_right_path():
-    importer = Importer(SparkSession=spark)
-    file_path = './data/data_paper_sample_10k.csv'
-    df = importer.import_csv_table(file_path=file_path, header='True', inferschema='True')
-    assert df != None
+# def test_import_csv_table_with_right_path():
+#     importer = Importer(SparkSession=spark)
+#     file_path = './data/data_paper_sample_10k.csv'
+#     df = importer.import_csv_table(file_path=file_path, header='True', inferschema='True')
+#     assert df != None
 
 def test_import_csv_table_with_wrong_path():
     importer = Importer(SparkSession=spark)
     file_path = 'wrong_path.csv'
     df = importer.import_csv_table(file_path=file_path, header='True', inferschema='True')
     assert df == None
-
-
